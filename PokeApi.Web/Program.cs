@@ -10,6 +10,10 @@ using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar servicios para Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 // Logging con NLog
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
@@ -60,6 +64,12 @@ builder.Services.AddScoped<IPokedexService, PokedexService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
