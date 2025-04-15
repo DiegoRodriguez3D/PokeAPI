@@ -4,9 +4,10 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace PokeApi.Web.Controllers
+namespace PokeApi.Web.Controllers.v1
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {

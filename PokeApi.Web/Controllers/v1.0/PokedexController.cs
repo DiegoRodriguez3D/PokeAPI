@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using PokeApi.Application.Interfaces;
 using PokeApi.Domain.Entities;
 
-namespace PokeApi.Web.Controllers
+namespace PokeApi.Web.Controllers.v1
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     public class PokedexController : ControllerBase
     {
