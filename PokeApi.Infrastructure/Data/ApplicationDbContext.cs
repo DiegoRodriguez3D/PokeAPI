@@ -29,6 +29,22 @@ namespace PokeApi.Infrastructure.Data
                 .WithMany(t => t.TeamPokemons)
                 .HasForeignKey(tp => tp.TeamId);
 
+            builder.Entity<Pokemon>(entity =>
+            {
+                // Relación para EvolvesFrom
+                entity.HasOne(p => p.EvolvesFrom)
+                      .WithMany()
+                      .HasForeignKey(p => p.EvolvesFromId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
+
+                // Relación para EvolvesTo
+                entity.HasOne(p => p.EvolvesTo)
+                      .WithMany()
+                      .HasForeignKey(p => p.EvolvesToId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
+
         }
     }
 }

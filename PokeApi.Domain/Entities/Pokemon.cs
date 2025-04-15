@@ -15,7 +15,13 @@
         public string Description { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
-        public ICollection<TeamPokemon> TeamPokemons { get; set; }
-            = new List<TeamPokemon>();
+        public string ImageUrl { get; set; }
+        public int? EvolvesFromId { get; set; }
+        public Pokemon? EvolvesFrom { get; set; }
+
+        public int? EvolvesToId { get; set; }
+        public Pokemon? EvolvesTo { get; set; }
+
+        public ICollection<TeamPokemon> TeamPokemons { get; set; } = new List<TeamPokemon>();
     }
 }

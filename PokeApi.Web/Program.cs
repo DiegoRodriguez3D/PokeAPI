@@ -7,6 +7,7 @@ using PokeApi.Application.Interfaces;
 using PokeApi.Application.Services;
 using PokeApi.Infrastructure.Repositories;
 using NLog.Web;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,7 +62,12 @@ builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 builder.Services.AddScoped<IPokedexService, PokedexService>();
 
 // Controladores
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
 
 var app = builder.Build();
 

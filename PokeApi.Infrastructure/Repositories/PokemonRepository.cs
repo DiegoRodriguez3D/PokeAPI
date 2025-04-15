@@ -16,12 +16,18 @@ namespace PokeApi.Infrastructure.Repositories
 
         public async Task<IEnumerable<Pokemon>> GetAllAsync()
         {
-            return await _db.Pokemons.ToListAsync();
+            return await _db.Pokemons
+                .Include(p => p.EvolvesFrom)
+                .Include(p => p.EvolvesTo)
+                .ToListAsync();
         }
 
         public async Task<Pokemon> GetByIdAsync(int id)
         {
-            return await _db.Pokemons.FindAsync(id);
+            return await _db.Pokemons
+                .Include(p => p.EvolvesFrom)
+                .Include(p => p.EvolvesTo)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Pokemon> CreateAsync(Pokemon pokemon)
