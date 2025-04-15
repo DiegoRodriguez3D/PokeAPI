@@ -58,6 +58,18 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalAngular", policyBuilder =>
+    {
+        policyBuilder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 // Registrar Repositorio y Servicio
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 builder.Services.AddScoped<IPokedexService, PokedexService>();
@@ -84,6 +96,8 @@ builder.Services.AddVersionedApiExplorer(setup =>
 });
 
 var app = builder.Build();
+
+app.UseCors("AllowLocalAngular");
 
 if (app.Environment.IsDevelopment())
 {
