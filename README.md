@@ -102,14 +102,6 @@ La solución está dividida en **cuatro proyectos**:
 | `/api/Teams/{id}`       | **PUT**  | Actualiza el equipo (cambiar miembros, etc.)                  | JWT (Obligatorio) |
 | `/api/Teams/{id}`       | **DELETE** | Elimina un equipo por su ID                                 | JWT (Obligatorio) |
 
-
-## Próximos Pasos
-
-1. **Implementar Dockerfile** para contenedorización de la API y facilitar el despliegue.
-2. **Desplegar en Azure** App Service o contenedores en Azure Container Instances / AKS.
-3. **Añadir un Frontend** (Angular, React, etc.) que consuma esta API y presente la Pokedex y la gestión de equipos.
-4. **Versionado** de la API usando `Microsoft.AspNetCore.Mvc.Versioning`.
-
 ---
 
 ## Créditos y Licencia
